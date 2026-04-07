@@ -4,23 +4,54 @@ ROSClaw G1 DDS MCP Server
 Unitree G1 Humanoid Robot MCP Server using DDS protocol.
 Part of the ROSClaw Embodied Intelligence Operating System.
 
+SDK Information:
+    Name: unitree_sdk2
+    Version: 2.1.0+
+    Protocol: DDS (Data Distribution Service)
+    Source: https://github.com/unitreerobotics/unitree_sdk2
+    Documentation: https://support.unitree.com/home/zh/developer
+    License: BSD-3-Clause
+
+Hardware: Unitree G1 Humanoid Robot (23/43 DOF)
+    Weight: ~35kg
+    Height: ~1.32m
+    Battery: ~2.5h runtime
+
 Features:
 - DDS communication via CycloneDDS/FastDDS
 - G1 actions: stand_up, sit_down, walk, move joints
 - Safety guards for joint limits
 - State monitoring (battery, joint angles, IMU)
 
-Hardware: Unitree G1 Humanoid Robot
-Protocol: DDS (Data Distribution Service)
+Safety Notice:
+    This server controls a 35kg humanoid robot. Always ensure:
+    - Emergency stop procedures are in place
+    - Adequate clearance around the robot
+    - Battery level > 20% for stable operation
+
+Generated: 2026-04-07
 """
 
 import asyncio
 import threading
 import time
+import json
 from typing import Optional, Dict, Any, List, Tuple
 from dataclasses import dataclass, field
 from collections import deque
 from mcp.server.fastmcp import FastMCP
+
+# SDK Metadata
+SDK_METADATA = {
+    "name": "unitree_sdk2",
+    "version": "2.1.0+",
+    "protocol": "DDS",
+    "source_url": "https://github.com/unitreerobotics/unitree_sdk2",
+    "doc_url": "https://support.unitree.com/home/zh/developer",
+    "license": "BSD-3-Clause",
+    "hardware_models": ["Unitree G1-23D", "Unitree G1-43D"],
+    "generated_at": "2026-04-07",
+}
 
 # Initialize MCP Server
 mcp = FastMCP("rosclaw-g1")
@@ -254,6 +285,17 @@ _bridge: Optional[G1DDSBridge] = None
 
 
 # ============ MCP Tools ============
+
+@mcp.tool()
+async def get_sdk_info() -> str:
+    """
+    Get SDK metadata and version information.
+
+    Returns:
+        JSON string with SDK metadata including version,
+        source URL, documentation URL, and supported hardware.
+    """
+    return json.dumps(SDK_METADATA, indent=2)
 
 @mcp.tool()
 async def connect_g1(domain_id: int = 0) -> str:
