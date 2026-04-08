@@ -1,0 +1,32 @@
+{
+  "robot_id": "g1-dds-mcp",
+  "robot_name": "Unitree G1 Humanoid Robot (DDS)",
+  "version": "1.0.0",
+  "description": "MCP server for Unitree G1 humanoid robot via DDS protocol",
+  "author": "sdk_to_mcp_v2.0",
+  "generated_date": "2026-04-08",
+  "sdk": {
+    "name": "unitree_sdk2",
+    "version": "2.1.0+",
+    "protocol": "DDS"
+  },
+  "hardware": {
+    "manufacturer": "Unitree",
+    "model": "G1",
+    "dof": 23
+  },
+  "files": [
+    "src/g1_mcp_server.py",
+    "e_urdf.json",
+    "prompts/system.md",
+    "prompts/tools_usage.md",
+    "manifest.json",
+    "pyproject.toml",
+    "README.md"
+  ],
+  "mcp_server": {
+    "command": "python",
+    "args": ["src/g1_mcp_server.py"],
+    "transport": "stdio"
+  }
+}
