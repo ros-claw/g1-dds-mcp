@@ -276,6 +276,7 @@ MIT License — See [LICENSE](LICENSE)
 
 ## Part of ROSClaw
 
+- [rosclaw](https://github.com/ros-claw/rosclaw) — Core framework (see [arXiv paper](https://arxiv.org/pdf/2604.04664))
 - [rosclaw-g1-dds-mcp](https://github.com/ros-claw/rosclaw-g1-dds-mcp) — Unitree G1 (DDS)
 - [rosclaw-ur-ros2-mcp](https://github.com/ros-claw/rosclaw-ur-ros2-mcp) — UR5 arm (ROS2)
 - [rosclaw-gimbal-mcp](https://github.com/ros-claw/rosclaw-gimbal-mcp) — GCU Gimbal (Serial)
