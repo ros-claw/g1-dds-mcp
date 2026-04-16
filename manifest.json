@@ -1,10 +1,10 @@
 {
-  "robot_id": "g1-dds-mcp",
-  "robot_name": "Unitree G1 Humanoid Robot (DDS)",
-  "version": "1.0.0",
-  "description": "MCP server for Unitree G1 humanoid robot via DDS protocol",
+  "robot_id": "unitree-sdk2-mcp",
+  "robot_name": "Unitree SDK2 Multi-Robot MCP Server",
+  "version": "0.2.0",
+  "description": "MCP server for all Unitree robots via DDS protocol (G1, Go2, H1, B2, A2, R1)",
   "author": "sdk_to_mcp_v2.0",
-  "generated_date": "2026-04-08",
+  "generated_date": "2026-04-15",
   "sdk": {
     "name": "unitree_sdk2",
     "version": "2.1.0+",
@@ -12,11 +12,21 @@
   },
   "hardware": {
     "manufacturer": "Unitree",
-    "model": "G1",
-    "dof": 23
+    "supported_models": [
+      "G1 (Humanoid, 23/43 DOF)",
+      "Go2 (Quadruped, 12 DOF)",
+      "Go2w (Quadruped with wheels, 12 DOF)",
+      "H1 (Humanoid, 20 DOF)",
+      "H2 (Humanoid, 20 DOF)",
+      "B2 (Quadruped, 12 DOF)",
+      "B2w (Quadruped with wheels, 12 DOF)",
+      "A2 (Quadruped, 12 DOF)",
+      "R1 (Wheeled robot)"
+    ]
   },
   "files": [
-    "src/g1_mcp_server.py",
+    "src/unitree_sdk2_mcp_server.py",
+    "src/robot_configs.py",
     "e_urdf.json",
     "prompts/system.md",
     "prompts/tools_usage.md",
@@ -26,7 +36,7 @@
   ],
   "mcp_server": {
     "command": "python",
-    "args": ["src/g1_mcp_server.py"],
+    "args": ["src/unitree_sdk2_mcp_server.py"],
     "transport": "stdio"
   }
 }

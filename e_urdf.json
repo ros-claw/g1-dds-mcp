@@ -1,105 +1,109 @@
 {
-  "embodiment_id": "g1_dds_v1",
-  "embodiment_name": "Unitree G1 Humanoid Robot (DDS)",
-  "version": "1.0.0",
+  "embodiment_id": "unitree_sdk2_multi",
+  "embodiment_name": "Unitree SDK2 Multi-Robot Platform",
+  "version": "0.2.0",
   "meta": {
     "manufacturer": "Unitree",
-    "model": "G1",
-    "description": "23/43-DOF humanoid robot controlled via DDS protocol with MCP interface",
-    "url": "https://www.unitree.com/products/g1",
-    "tags": ["humanoid", "bipedal", "locomotion", "dds", "unitree"],
+    "description": "Multi-robot MCP server supporting G1, Go2, H1, B2, A2, R1 via DDS protocol",
+    "url": "https://github.com/unitreerobotics/unitree_sdk2",
+    "tags": ["multi-robot", "dds", "unitree", "g1", "go2", "h1", "b2", "a2", "r1", "humanoid", "quadruped", "wheeled"],
     "difficulty": "advanced",
-    "release_date": "2024-03",
+    "release_date": "2026-04",
     "generated_by": "sdk_to_mcp_v2.0"
   },
-  "kinematics": {
-    "base_frame": "pelvis",
-    "floating_base": true,
-    "dof": 23,
-    "dof_actuated": 23,
-    "joint_topology": "humanoid_tree",
-    "workspace_type": "omnidirectional"
-  },
-  "joints": {
-    "names": [
-      "left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint",
-      "left_knee_joint", "left_ankle_pitch_joint", "left_ankle_roll_joint",
-      "right_hip_pitch_joint", "right_hip_roll_joint", "right_hip_yaw_joint",
-      "right_knee_joint", "right_ankle_pitch_joint", "right_ankle_roll_joint",
-      "waist_yaw_joint", "waist_roll_joint", "waist_pitch_joint",
-      "left_shoulder_pitch_joint", "left_shoulder_roll_joint", "left_shoulder_yaw_joint",
-      "left_elbow_joint", "left_wrist_roll_joint",
-      "right_shoulder_pitch_joint", "right_shoulder_roll_joint", "right_shoulder_yaw_joint",
-      "right_elbow_joint", "right_wrist_roll_joint",
-      "head_yaw_joint", "head_pitch_joint"
-    ],
-    "limits": {
-      "position_rad": {
-        "left_hip_pitch_joint": [-2.5, 2.5],
-        "left_hip_roll_joint": [-0.87, 0.87],
-        "left_hip_yaw_joint": [-1.5, 1.5],
-        "left_knee_joint": [-2.8, 0.0],
-        "left_ankle_pitch_joint": [-1.0, 1.0],
-        "left_ankle_roll_joint": [-0.5, 0.5],
-        "right_hip_pitch_joint": [-2.5, 2.5],
-        "right_hip_roll_joint": [-0.87, 0.87],
-        "right_hip_yaw_joint": [-1.5, 1.5],
-        "right_knee_joint": [-2.8, 0.0],
-        "right_ankle_pitch_joint": [-1.0, 1.0],
-        "right_ankle_roll_joint": [-0.5, 0.5],
-        "waist_yaw_joint": [-1.5, 1.5],
-        "waist_roll_joint": [-0.5, 0.5],
-        "waist_pitch_joint": [-1.0, 1.0],
-        "left_shoulder_pitch_joint": [-3.14, 3.14],
-        "left_shoulder_roll_joint": [-1.0, 3.14],
-        "left_shoulder_yaw_joint": [-2.0, 2.0],
-        "left_elbow_joint": [-2.5, 0.0],
-        "left_wrist_roll_joint": [-1.5, 1.5],
-        "right_shoulder_pitch_joint": [-3.14, 3.14],
-        "right_shoulder_roll_joint": [-3.14, 1.0],
-        "right_shoulder_yaw_joint": [-2.0, 2.0],
-        "right_elbow_joint": [-2.5, 0.0],
-        "right_wrist_roll_joint": [-1.5, 1.5],
-        "head_yaw_joint": [-2.5, 2.5],
-        "head_pitch_joint": [-0.5, 0.5]
-      }
-    }
-  },
-  "semantics": {
-    "robot_type": "humanoid",
-    "affordances": [
-      "bipedal_locomotion",
-      "walking",
-      "standing",
-      "sitting",
-      "reaching",
-      "grasping",
-      "manipulation",
-      "balancing",
-      "stepping_over"
-    ],
-    "end_effector_capabilities": ["parallel_gripper", "dexterous_hand"],
-    "typical_payload_kg": 2.0,
-    "max_payload_kg": 3.0,
-    "height_m": 1.32,
-    "weight_kg": 35.0,
-    "walking_speed_m_s": 1.5,
-    "battery_life_hours": 2.5,
-    "human_collaboration": {
-      "force_limiting": true,
-      "compliant_control": true,
-      "safety_rated_monitored_stop": false
+  "supported_robots": {
+    "g1": {
+      "name": "Unitree G1 Humanoid",
+      "type": "humanoid",
+      "dof": 23,
+      "features": ["walking", "arm_control", "balancing"],
+      "height_m": 1.32,
+      "weight_kg": 35.0,
+      "battery_life_hours": 2.5
+    },
+    "go2": {
+      "name": "Unitree Go2 Quadruped",
+      "type": "quadruped",
+      "dof": 12,
+      "features": ["walking", "trotting", "galloping"],
+      "weight_kg": 15.0,
+      "battery_life_hours": 2.0
+    },
+    "go2w": {
+      "name": "Unitree Go2w Quadruped (Wheeled)",
+      "type": "quadruped",
+      "dof": 12,
+      "features": ["walking", "wheel_mode", "hybrid"],
+      "weight_kg": 16.0,
+      "battery_life_hours": 2.0
+    },
+    "h1": {
+      "name": "Unitree H1 Humanoid",
+      "type": "humanoid",
+      "dof": 20,
+      "features": ["walking", "arm_control", "balancing"],
+      "height_m": 1.80,
+      "weight_kg": 47.0,
+      "battery_life_hours": 2.0
+    },
+    "h2": {
+      "name": "Unitree H2 Humanoid",
+      "type": "humanoid",
+      "dof": 20,
+      "features": ["walking", "arm_control", "balancing"],
+      "height_m": 1.75,
+      "weight_kg": 45.0,
+      "battery_life_hours": 2.5
+    },
+    "b2": {
+      "name": "Unitree B2 Quadruped",
+      "type": "quadruped",
+      "dof": 12,
+      "features": ["walking", "payload_carrying", "industrial"],
+      "weight_kg": 60.0,
+      "battery_life_hours": 4.0,
+      "max_payload_kg": 40.0
+    },
+    "b2w": {
+      "name": "Unitree B2w Quadruped (Wheeled)",
+      "type": "quadruped",
+      "dof": 12,
+      "features": ["walking", "wheel_mode", "payload_carrying"],
+      "weight_kg": 62.0,
+      "battery_life_hours": 4.0,
+      "max_payload_kg": 40.0
+    },
+    "a2": {
+      "name": "Unitree A2 Quadruped",
+      "type": "quadruped",
+      "dof": 12,
+      "features": ["walking", "agile_movement", "education"],
+      "weight_kg": 15.0,
+      "battery_life_hours": 1.5
+    },
+    "r1": {
+      "name": "Unitree R1 Wheeled Robot",
+      "type": "wheeled",
+      "dof": 4,
+      "features": ["driving", "navigation", "delivery"],
+      "weight_kg": 25.0,
+      "battery_life_hours": 3.0,
+      "max_speed_m_s": 5.0
     }
   },
   "sdk_mappings": {
     "dds_driver": "unitree_sdk2",
     "protocol": "DDS",
-    "network_interface": "eth0",
-    "default_ip": "192.168.123.220"
+    "topics": {
+      "lowstate": "/lowstate",
+      "lowcmd": "/lowcmd",
+      "sportmodestate": "/sportmodestate"
+    },
+    "default_domain_id": 0
   },
   "physical_firewall": {
     "engine": "mujoco",
-    "validation_level": "full_humanoid",
+    "validation_level": "adaptive",
     "mjlab_validation_required": true,
     "max_simulation_horizon_sec": 3.0,
     "speed_up_factor": 100,
@@ -109,37 +113,33 @@
       "joint_position_limits": true,
       "joint_velocity_limits": true,
       "joint_torque_limits": true,
-      "zmp_stability": true,
       "balance_check": true
     },
     "safety_margins": {
       "joint_position": 0.1,
       "joint_velocity": 0.15,
-      "joint_torque": 0.1,
-      "zmp_margin_m": 0.02
-    },
-    "balance_params": {
-      "zmp_check_enabled": true,
-      "min_foot_contact_force_n": 10.0,
-      "max_tilt_angle_deg": 15.0,
-      "emergency_fall_detection": true
+      "joint_torque": 0.1
     }
   },
   "mcp_server_config": {
     "tools": [
+      "connect_robot",
+      "disconnect_robot",
+      "list_robots",
+      "get_robot_info",
       "stand_up",
       "sit_down",
-      "walk_forward",
-      "stop_movement",
-      "get_joint_states",
-      "get_battery_level",
+      "walk_with_velocity",
       "move_joint",
-      "set_body_pose"
+      "move_joints",
+      "stop_movement",
+      "emergency_stop",
+      "wave_hand"
     ],
     "resources": [
-      "g1://state/joints",
-      "g1://state/battery",
-      "g1://state/imu"
+      "unitree://{robot_id}/status",
+      "unitree://{robot_id}/joints",
+      "unitree://connections"
     ],
     "transport": "stdio"
   }

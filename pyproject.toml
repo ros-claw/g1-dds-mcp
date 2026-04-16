@@ -3,13 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "rosclaw-g1-dds-mcp"
-version = "0.1.0"
-description = "ROSClaw MCP Server for Unitree G1 Humanoid Robot via DDS"
+name = "unitree-sdk2-mcp"
+version = "0.2.0"
+description = "ROSClaw MCP Server for Unitree Robots via DDS (G1, Go2, H1, B2, A2, R1)"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-keywords = ["mcp", "robotics", "unitree", "g1", "dds", "humanoid"]
+keywords = ["mcp", "robotics", "unitree", "dds", "g1", "go2", "h1", "b2", "a2", "r1", "humanoid", "quadruped"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -34,12 +34,14 @@ dev = [
 ]
 
 [project.scripts]
-rosclaw-g1-mcp = "g1_mcp_server:main"
+unitree-sdk2-mcp = "unitree_sdk2_mcp_server:main"
+# Legacy alias for backward compatibility
+rosclaw-g1-mcp = "unitree_sdk2_mcp_server:main"
 
 [project.urls]
-Homepage = "https://github.com/ros-claw/rosclaw-g1-dds-mcp"
-Repository = "https://github.com/ros-claw/rosclaw-g1-dds-mcp"
-Issues = "https://github.com/ros-claw/rosclaw-g1-dds-mcp/issues"
+Homepage = "https://github.com/ros-claw/unitree-sdk2-mcp"
+Repository = "https://github.com/ros-claw/unitree-sdk2-mcp"
+Issues = "https://github.com/ros-claw/unitree-sdk2-mcp/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
